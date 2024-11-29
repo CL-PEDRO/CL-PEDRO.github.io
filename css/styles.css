@@ -1,0 +1,78 @@
+/* Estilos Generales */
+
+
+body{
+    background-color: aquamarine;
+}
+.texto-titulo{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Sour Gummy", sans-serif;
+
+}
+
+
+/* Estilos para el menú flotante */
+.floating-menu {
+    
+  width: 750px;
+  height: 324px;
+
+  position: fixed;
+
+  justify-content: center;
+  align-content: center;
+  
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000;
+
+
+  background-image:url("../img/Backgrounds/Baground_Menu.png");
+  
+}
+
+.UI-Menu{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    gap: 15px;
+    
+    
+}
+
+.button-Menu{
+  
+  margin: 0 auto;  /*Centrar div*/
+  width: 150px;
+  height: 75px;
+  border-radius: 15px;
+
+}
+
+
+
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+#game-section {
+  display: none; /* Ocultar por defecto */
+}
