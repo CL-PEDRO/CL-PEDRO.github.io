@@ -1,9 +1,19 @@
 /* Estilos Generales */
 
-
 body{
-    background-color: aquamarine;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+  background-image: url('../img/Backgrounds/Background1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px -150px;
+  
+
+  overflow: hidden;
+
 }
+
 .texto-titulo{
     font-size: 30px;
     font-weight: bold;
@@ -11,6 +21,26 @@ body{
 
 }
 
+/* Juego state */
+.horca{
+    position: absolute;
+    
+}
+
+/* Game Mian  */
+
+.game-main{
+  
+  width: 1500px;
+  height: 100em;
+}
+
+
+.estructura-horca{
+  position: relative;
+  top: -350px;
+  
+}
 
 /* Estilos para el menú flotante */
 .floating-menu {

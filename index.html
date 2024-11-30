@@ -14,6 +14,8 @@
   
   <!-- styles Css -->
    <link rel="stylesheet" href="./css/styles.css">
+
+
 </head>
 
 <body>
@@ -33,27 +35,15 @@
 
   <!-- Sección del Juego -->
   <div id="game-section">
-    <h1>¡Juego Iniciado!</h1>
-    <p>Aquí va el contenido del juego...</p>
-    <!-- Puedes incluir tu juego aquí -->
+    <div class="container">
+        <div >
+          <img  class="estructura-horca" src="./img/Etructuras/Horca.png" alt="Horca de madera">
+        </div>
+    </div>
   </div>
 
-  <!-- Script JavaScript -->
-  <script>
-    const playButton = document.getElementById('play-button');
-    const menu = document.getElementById('menu');
-    const gameSection = document.getElementById('game-section');
 
-    playButton.addEventListener('click', () => {
-      // Añadir clase para la animación de desvanecimiento
-      menu.classList.add('fade-out');
-      // Mostrar el juego después de la animación (1s)
-      setTimeout(() => {
-        menu.style.display = 'none'; // Ocultar el menú completamente
-        gameSection.style.display = 'block'; // Mostrar el juego
-      }, 1000);
-    });
-  </script>
-
+   <!-- Archivos Js -->
+   <script src="./js/game.js"></script>
 </body>
 </html>
