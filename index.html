@@ -19,31 +19,102 @@
 </head>
 
 <body>
-
+  <div  id="menu-de-ingreso" class="floating-menu" >
+    <div  class="UI-Menu ">
+      <h2 class="texto-titulo" style="font-family: 'Rock Salt', cursive; font-size: 50px; color:black; margin-top:25px">
+          Ingrese un nombre de usuario
+      </h2>
+      <form >
+        <input id="nombre_user" type="text"><br>
+        <button id="next-button"  class="btn btn-warning button-Menu texto-titulo">Continuar</button>
+      </form>
+  
+  </div>
+  </div>
   <!-- Menú Flotante -->
   <div id="menu" class="floating-menu">
     <div class="UI-Menu ">
         <h2 class="texto-titulo" style="font-family: 'Rock Salt', cursive; font-size: 75px; color:black;">
             Bienvenido
         </h2>
-        <button id="play-button" class="btn btn-warning button-Menu texto-titulo">Jugar</button>
-        <button id="score-button" class="btn btn-warning button-Menu texto-titulo">Score</button>
+        <a href="#seccion-juego"><button id="play-button" class="btn btn-warning button-Menu texto-titulo">Jugar</button></a>
+        <a href="score.html"><button id="score-button" class="btn btn-warning button-Menu texto-titulo">Score</button></a>
     
     </div>
 
   </div>
 
+
   <!-- Sección del Juego -->
-  <div id="game-section">
-    <div class="container">
-        <div >
-          <img  class="estructura-horca" src="./img/Etructuras/Horca.png" alt="Horca de madera">
-        </div>
+  <section id="seccion-juego">
+    <div class="seccion-juego" id="game-section">
+      <div style="min-height: 75px;">
+        Contador !
+        <h1 id="contador"></h1>
+      </div>
+      <div class="container" style="position: absolute;">
+          <div >
+          <!-- -- <img  class="estructura-horca" src="./img/Etructuras/Horca.png" alt="Horca de madera"> -->
+          </div>
+      </div>
+  
+      <div class="contenedor-letras">
+        <H1>hola</H1>
+        <form id="gaps">
+          
+        </form> 
+      </div>
+    </div>
+  </section>
+
+
+<!-- Modal de Victoria -->
+<div class="modal fade" id="victoryModal" tabindex="-1" aria-labelledby="victoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="victoryModalLabel">¡Felicidades!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Has ganado el juego. ¿Quieres volver a jugar?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closeButton">Cerrar</button>
+
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
+        <button type="button" id="replayButton" class="btn btn-primary">Volver a jugar</button>
+      </div>
     </div>
   </div>
+</div>
 
+<div class="modal fade" id="loseModal" tabindex="-1" aria-labelledby="victoryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="victoryModalLabel">Perdiste!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Has perdido el juego. ¿Quieres volver a jugar?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="closeButton2">Cerrar</button>
+
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button> -->
+        <button type="button" id="replayButton2" class="btn btn-primary">Volver a jugar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
    <!-- Archivos Js -->
+   <script src="./js/score.js"></script>
    <script src="./js/game.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+
+
 </html>

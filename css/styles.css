@@ -4,13 +4,13 @@ body{
   margin: 0px;
   padding: 0px;
   height: 100vh;
-  background-image: url('../img/Backgrounds/Background1.png');
+  background-image: url('../img/Backgrounds/Background1.png'); 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0px -150px;
   
-
-  overflow: hidden;
+  overflow:hidden;
+  /* overflow:scroll; */
 
 }
 
@@ -21,6 +21,14 @@ body{
 
 }
 
+/* seccion bacground incicial */
+.background-inicial
+{
+  min-height: 971px;
+  background-color: #8d16d1;
+}
+
+
 /* Juego state */
 .horca{
     position: absolute;
@@ -28,19 +36,14 @@ body{
 }
 
 /* Game Mian  */
+.seccion-juego{
+  min-height: 917px;
+  background-color: #f5f6f7;
 
-.game-main{
-  
-  width: 1500px;
-  height: 100em;
 }
 
 
-.estructura-horca{
-  position: relative;
-  top: -350px;
-  
-}
+
 
 /* Estilos para el menú flotante */
 .floating-menu {
@@ -90,9 +93,38 @@ body{
 }
 
 
+/* seccion-ingreso-datos */
 
+.seccion-ingreso-datos{
+  min-height: 917px;
+  background-color: #f5f6f7;
+
+}
+
+
+
+
+
+/* seccion Logica de juego */
+
+
+.inputs-letras{
+  border: none;
+  border-bottom: 5px solid red;
+  margin-left: 5px;
+  background: transparent;
+  width: 45px;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
 .fade-out {
   animation: fadeOut 1s forwards;
+}
+
+
+.fade-int{
+  animation: fadeInt 1s forwards;
 }
 @keyframes fadeOut {
   from {
@@ -101,6 +133,16 @@ body{
   to {
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+@keyframes fadeInt{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+
   }
 }
 #game-section {
