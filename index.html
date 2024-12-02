@@ -18,14 +18,14 @@
 
 </head>
 
-<body>
+<body onclick="playAudio(true)">
   <div  id="menu-de-ingreso" class="floating-menu" >
     <div  class="UI-Menu ">
-      <h2 class="texto-titulo" style="font-family: 'Rock Salt', cursive; font-size: 50px; color:black; margin-top:25px">
+      <h2 class="texto-titulo" id="back-text"  style="font-family: 'Rock Salt', cursive; font-size: 50px; color:black; margin-top:25px">
           Ingrese un nombre de usuario
       </h2>
       <form >
-        <input id="nombre_user" type="text"><br>
+        <input id="nombre_user" type="text"><br> <br>
         <button id="next-button"  class="btn btn-warning button-Menu texto-titulo">Continuar</button>
       </form>
   
@@ -33,12 +33,12 @@
   </div>
   <!-- Menú Flotante -->
   <div id="menu" class="floating-menu">
-    <div class="UI-Menu ">
-        <h2 class="texto-titulo" style="font-family: 'Rock Salt', cursive; font-size: 75px; color:black;">
-            Bienvenido
+    <div class="UI-Menu " >
+        <h2 id="back-text" class="texto-titulo" style="font-family: 'Rock Salt', cursive; font-size: 75px; color:black;">
+          Ahorcado
         </h2>
-        <a href="#seccion-juego"><button id="play-button" class="btn btn-warning button-Menu texto-titulo">Jugar</button></a>
-        <a href="score.html"><button id="score-button" class="btn btn-warning button-Menu texto-titulo">Score</button></a>
+        <button id="play-button" class="btn btn-warning button-Menu texto-titulo">Jugar</button>
+        <a href="score.html" id="score-link"><button id="score-button" class="btn btn-warning button-Menu texto-titulo">Score</button></a>
     
     </div>
 
@@ -49,23 +49,20 @@
   <section id="seccion-juego">
     <div class="seccion-juego" id="game-section">
       <div style="min-height: 75px;">
-        Contador !
-        <h1 id="contador"></h1>
+        <h2>Contador:</h2>
+        <h1 id="contador">0</h1>
       </div>
-      <div class="container" style="position: absolute;">
-          <div >
-          <!-- -- <img  class="estructura-horca" src="./img/Etructuras/Horca.png" alt="Horca de madera"> -->
-          </div>
-      </div>
-  
       <div class="contenedor-letras">
-        <H1>hola</H1>
-        <form id="gaps">
-          
-        </form> 
+        <h1>Adivina la palabra</h1>
+        <form id="gaps"></form> 
+        <button id="pistas"  style="height: 25px;">Pistas 3</button>
       </div>
     </div>
+    <div id="ahorcado-container">
+      <img id="ahorcado-img" src="./img/Personaje/male/ahorcado.png" alt="Ahorcado" style="max-width: 100%; height: auto;">
+    </div>
   </section>
+  
 
 
 <!-- Modal de Victoria -->
@@ -74,7 +71,6 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="victoryModalLabel">¡Felicidades!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         Has ganado el juego. ¿Quieres volver a jugar?
@@ -94,7 +90,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="victoryModalLabel">Perdiste!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
       <div class="modal-body">
         Has perdido el juego. ¿Quieres volver a jugar?
@@ -108,7 +104,10 @@
     </div>
   </div>
 </div>
-
+<audio id="audio" loop >
+  <source src="../sounds/music_main.ogg" type="audio/ogg">
+  Tu navegador no soporta la etiqueta de audio.
+</audio>
    <!-- Archivos Js -->
    <script src="./js/score.js"></script>
    <script src="./js/game.js"></script>

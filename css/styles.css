@@ -4,7 +4,8 @@ body{
   margin: 0px;
   padding: 0px;
   height: 100vh;
-  background-image: url('../img/Backgrounds/Background1.png'); 
+  background-image: url('../img/Backgrounds/Backround_pizarra.png');
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0px -150px;
@@ -29,20 +30,63 @@ body{
 }
 
 
+/* Lista de imagenes */
+
+#ahorcado-img {
+  width: 300px; /* Ajusta según tu diseño */
+  height: auto;
+  transition: opacity 0.5s ease; /* Suaviza el cambio de imagen */
+}
+
+
+
 /* Juego state */
-.horca{
-    position: absolute;
-    
+#seccion-juego {
+  position: relative;
+  height: 100vh;
+  background: url('./img/Etructuras/Horca.png') no-repeat center center; /* Imagen de fondo */
+  background-size: cover; /* Ajustar la imagen para cubrir toda la sección */
+  color: white; /* Texto en blanco para mejor contraste */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-/* Game Mian  */
-.seccion-juego{
-  min-height: 917px;
-  background-color: #f5f6f7;
-
+.seccion-juego {
+  background: rgba(0, 0, 0, 0.6); /* Fondo semitransparente para resaltar el contenido */
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
 }
 
+#contador {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 10px 0;
+}
 
+.contenedor-letras {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px; /* Espaciado entre los inputs */
+}
+
+#contador, .contenedor-letras h1 {
+  text-shadow: 2px 2px 5px black; /* Sombra para el texto */
+}
+
+.respuesta_correcta{
+  
+  border-bottom: 5px solid green !important;
+  
+}
+.respuesta_incorrecta{
+  border-bottom: 5px solid red;
+}
 
 
 /* Estilos para el menú flotante */
@@ -147,4 +191,35 @@ body{
 }
 #game-section {
   display: none; /* Ocultar por defecto */
+}
+
+button{
+  animation:  1.2s ease-in-out ;
+  cursor: pointer;
+}
+
+button:hover {
+  animation: animationButton 1.2s ease-in-out infinite;
+}
+
+
+
+@keyframes animationButton {
+  0%{
+    transform: scale(1);
+  }50%{
+    transform: scale(1.2);
+  }100%{
+    transform: scale(1);
+  }
+}
+
+#score-link {
+  display: inline-block;  /* Asegura que el enlace solo ocupe el espacio del botón */
+}
+
+
+#back-text{
+  min-height: 110px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
