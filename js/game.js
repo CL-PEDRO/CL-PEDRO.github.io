@@ -78,55 +78,62 @@ playButton.addEventListener('click', () => {
 
 
 // Gpas
-function fill_gabps(n,palabra) {
-    let form_to_add_gaps = document.getElementById("gaps");
-    const array_Inputs  = []
-    
-    for (let i = 0; i < n; i++) {
-      
+function fill_gabps(n, palabra) {
+  let form_to_add_gaps = document.getElementById("gaps");
+  palabra_global = "_".repeat(n); // Inicializamos palabra_global con guiones bajos
+  const array_Inputs = [];
+  
+  for (let i = 0; i < n; i++) {
       let input = document.createElement("input");
-      input.className = "inputs-letras"; 
+      input.className = "inputs-letras";
       input.type = "text";
-      input.maxLength = 1; 
+      input.maxLength = 1;
       input.pattern = "[A-Za-záéíóúÁÉÍÓÚñÑ]+";
-      input.id = "input-texto-" + i; 
-      input.style.color="white";
-      
-      palabra_global +=""+i;
-      input.addEventListener('input', function (event) {
-        
-        this.value = this.value.replace(/[^A-Za-záéíóúÁÉÍÓÚñÑ]/g, '');
+      input.id = "input-texto-" + i;
+      input.style.color = "white";
 
-        if(validar_letra(this,palabra,i))
-        {
-            palabra_global=palabra_global.replace(""+i,palabra[i])
-            playSound(correct_Sound);
-            // console.log("Estamos añaniendo una letra", palabra_global)
-            this.classList.add('respuesta_correcta');
-            if (palabra_global == palabra)
-            {
-                playAudio(false);
-                playSound(win_Sound);
-                playAudio(true);
-                contador_veces_ganadas++;              
-                showVictoryModal();
-            }
-        }else{
-            playSound(wrong_Sound);
-        }
+      input.addEventListener('input', function (event) {
+          const value = this.value.replace(/[^A-Za-záéíóúÁÉÍÓÚñÑ]/g, ''); // Eliminamos caracteres no válidos
+          this.value = value;
+
+          // Evitamos errores por letras inválidas
+          if (value === "") {
+              return; // No procesamos si el input está vacío
+          }
+
+          // Validar la letra ingresada
+          const isCorrect = validar_letra(value, palabra, i);
+
+          if (isCorrect) {
+              palabra_global = palabra_global.substring(0, i) + palabra[i] + palabra_global.substring(i + 1);
+              playSound(correct_Sound);
+              this.classList.add('respuesta_correcta');
+
+              // Verificar si la palabra completa coincide
+              if (palabra_global === palabra) {
+                  playAudio(false);
+                  playSound(win_Sound);
+                  playAudio(true);
+                  contador_veces_ganadas++;
+                  showVictoryModal();
+              }
+          } else {
+              playSound(wrong_Sound);
+              registrarError(); // Manejo de errores
+          }
       });
 
-
-
       array_Inputs.push(input);
-      
       form_to_add_gaps.appendChild(input);
-    }
-
-    
-
-    return array_Inputs
   }
+
+  return array_Inputs;
+}
+
+// Función validar_letra mejorada
+function validar_letra(letra, palabra, numero_de_input) {
+  return palabra[numero_de_input] === letra;
+}
 
 
 //Logica
@@ -165,10 +172,10 @@ function logic_Game(palabra) {
 }
 
 
-function validar_letra(input,palabra,numero_de_input)
-{
-    return palabra[numero_de_input] == input.value
-}
+// function validar_letra(input,palabra,numero_de_input)
+// {
+//     return palabra[numero_de_input] == input.value
+// }
 
 
 // datos the login :D
@@ -350,26 +357,36 @@ pistas_button.addEventListener('click',()=>
     generador_pistas()
 });
 
-function generador_pistas()
-{
-    if(num_pistas>0)
-    {
-    
-        let tamaño_palabra = palabra_global.length;
+function generador_pistas() {
+  if (num_pistas > 0) {
+      let tamaño_palabra = palabra_global.length;
 
-        const numero_pista = Math.floor(Math.random()*tamaño_palabra )+1;
-        console.log("Numero de letra "+ num_pistas + "se cambiara ",palabra_global[numero_pista]);
-        arreglo_de_inputs_blogal[numero_pista].value = palabra_correcta[numero_pista]; 
-        arreglo_de_inputs_blogal[numero_pista].classList.add("respuesta_correcta");
-        palabra_global=palabra_global.replace(""+numero_pista,palabra_correcta[numero_pista])
-        
-        num_pistas--;
-        pistas_button.textContent = 'Pistas ' + num_pistas;
-    }else{
-        // alert("pistas agotadas")
-       
-    }
+      // Encontrar un índice válido que aún no haya sido resuelto
+      let numero_pista;
+      do {
+          numero_pista = Math.floor(Math.random() * tamaño_palabra); // Elegimos un índice aleatorio
+      } while (palabra_global[numero_pista] === palabra_correcta[numero_pista]); // Repetimos si ya está resuelto
+
+      // Mostrar la letra correspondiente en el input y marcarla como correcta
+      arreglo_de_inputs_blogal[numero_pista].value = palabra_correcta[numero_pista];
+      arreglo_de_inputs_blogal[numero_pista].classList.add("respuesta_correcta");
+
+      // Actualizar la palabra_global con la letra revelada
+      palabra_global = 
+          palabra_global.substring(0, numero_pista) +
+          palabra_correcta[numero_pista] +
+          palabra_global.substring(numero_pista + 1);
+
+      console.log("Pista utilizada. Palabra global actualizada:", palabra_global);
+
+      // Reducir el número de pistas disponibles
+      num_pistas--;
+      pistas_button.textContent = 'Pistas ' + num_pistas;
+  } else {
+      console.log("No quedan pistas disponibles.");
+  }
 }
+
 
 let erroresJugador = -1;
 
@@ -399,14 +416,14 @@ function registrarError() {
     actualizarAhorcado();
 }
 
-function validar_letra(input, palabra, numero_de_input) {
-    if (palabra[numero_de_input] === input.value) {
-      return true;
-    } else {
-      registrarError();
-      return false;
-    }
-  }
+// function validar_letra(input, palabra, numero_de_input) {
+//     if (palabra[numero_de_input] === input.value) {
+//       return true;
+//     } else {
+      
+//       return false;
+//     }
+//   }
 
 
 
