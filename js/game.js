@@ -1,13 +1,13 @@
 // Variables blobales
 
-let timer_time = 1500;
+let timer_time = 150;
 let timer__object
 let palabra_global = "";
 
 let contador_veces_ganadas = 0;
 let nombre_player = "";
 
-let num_pistas = 3;
+let num_pistas = 4;
 
 const gameSection = document.getElementById('game-section');
 const nextButton = document.getElementById('next-button');
@@ -90,6 +90,7 @@ function fill_gabps(n,palabra) {
       input.maxLength = 1; 
       input.pattern = "[A-Za-záéíóúÁÉÍÓÚñÑ]+";
       input.id = "input-texto-" + i; 
+      input.style.color="white";
       
       palabra_global +=""+i;
       input.addEventListener('input', function (event) {
@@ -261,8 +262,8 @@ function showVictoryModal() {
 
   function resetGame() {
     stopTimer()
-    timer_time = 15;
-    num_pistas=3;
+    timer_time = 150;
+    num_pistas=4;
     timer_to_down();
     reset_Dibujo();
     pistas_button.textContent = 'Pistas ' + num_pistas;
