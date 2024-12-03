@@ -223,3 +223,7 @@ button:hover {
   min-height: 110px;
   background-color: rgba(0, 0, 0, 0.6);
 }
+
+.modal_desing{
+  background-color: bisque;
+}

@@ -7,7 +7,7 @@ let palabra_global = "";
 let contador_veces_ganadas = 0;
 let nombre_player = "";
 
-let num_pistas = 4;
+let num_pistas = 5;
 
 const gameSection = document.getElementById('game-section');
 const nextButton = document.getElementById('next-button');
@@ -80,7 +80,7 @@ playButton.addEventListener('click', () => {
 // Gpas
 function fill_gabps(n, palabra) {
   let form_to_add_gaps = document.getElementById("gaps");
-  palabra_global = "_".repeat(n); // Inicializamos palabra_global con guiones bajos
+  palabra_global = "_".repeat(n); 
   const array_Inputs = [];
   
   for (let i = 0; i < n; i++) {
@@ -93,15 +93,15 @@ function fill_gabps(n, palabra) {
       input.style.color = "white";
 
       input.addEventListener('input', function (event) {
-          const value = this.value.replace(/[^A-Za-záéíóúÁÉÍÓÚñÑ]/g, ''); // Eliminamos caracteres no válidos
+          const value = this.value.replace(/[^A-Za-záéíóúÁÉÍÓÚñÑ]/g, ''); 
           this.value = value;
 
-          // Evitamos errores por letras inválidas
+          
           if (value === "") {
-              return; // No procesamos si el input está vacío
+              return; 
           }
 
-          // Validar la letra ingresada
+          
           const isCorrect = validar_letra(value, palabra, i);
 
           if (isCorrect) {
@@ -109,7 +109,7 @@ function fill_gabps(n, palabra) {
               playSound(correct_Sound);
               this.classList.add('respuesta_correcta');
 
-              // Verificar si la palabra completa coincide
+              
               if (palabra_global === palabra) {
                   playAudio(false);
                   playSound(win_Sound);
@@ -119,7 +119,7 @@ function fill_gabps(n, palabra) {
               }
           } else {
               playSound(wrong_Sound);
-              registrarError(); // Manejo de errores
+              registrarError(); 
           }
       });
 
@@ -130,7 +130,7 @@ function fill_gabps(n, palabra) {
   return array_Inputs;
 }
 
-// Función validar_letra mejorada
+
 function validar_letra(letra, palabra, numero_de_input) {
   return palabra[numero_de_input] === letra;
 }
@@ -158,7 +158,7 @@ const recibePalabra = async () =>{
 let palabra_correcta 
 let arreglo_de_inputs_blogal 
 function logic_Game(palabra) {
-    // Obtener palabra
+   
     palabra_correcta = palabra;
     console.log(palabra)
     const let_Word = palabra.length;
@@ -172,12 +172,6 @@ function logic_Game(palabra) {
 }
 
 
-// function validar_letra(input,palabra,numero_de_input)
-// {
-//     return palabra[numero_de_input] == input.value
-// }
-
-
 // datos the login :D
 
 function user_data(){
@@ -187,39 +181,8 @@ function user_data(){
     console.log(nombre_player)
 }
 
-function storege_data()
-{
-    if(nombre_player)
-    {
-        let valor_en_local_storage = localStorage.getItem(nombre_player);
-
-        if (valor_en_local_storage == null)
-        {
-            localStorage.setItem(nombre_player,contador_veces_ganadas);
-        }else
-        {
-            if(valor_en_local_storage <= contador_veces_ganadas)
-            {
-                localStorage.setItem(nombre_player,contador_veces_ganadas);
-            }
-        }
-
-    }else
-    {
-        console.log("El nombre no existe :D");
-    }
-}
-
-
-
 // Funcioones extras
 
-function mover_section(id){
-    const targetSection = document.getElementById(id);
-
-
-    targetSection.scrollIntoView({behavior:"smooth"});
-}
 
 function showVictoryModal() {
     
@@ -270,7 +233,7 @@ function showVictoryModal() {
   function resetGame() {
     stopTimer()
     timer_time = 150;
-    num_pistas=4;
+    num_pistas=5;
     timer_to_down();
     reset_Dibujo();
     pistas_button.textContent = 'Pistas ' + num_pistas;
@@ -361,25 +324,25 @@ function generador_pistas() {
   if (num_pistas > 0) {
       let tamaño_palabra = palabra_global.length;
 
-      // Encontrar un índice válido que aún no haya sido resuelto
+      
       let numero_pista;
       do {
-          numero_pista = Math.floor(Math.random() * tamaño_palabra); // Elegimos un índice aleatorio
-      } while (palabra_global[numero_pista] === palabra_correcta[numero_pista]); // Repetimos si ya está resuelto
+          numero_pista = Math.floor(Math.random() * tamaño_palabra); 
+      } while (palabra_global[numero_pista] === palabra_correcta[numero_pista]); 
 
-      // Mostrar la letra correspondiente en el input y marcarla como correcta
+      
       arreglo_de_inputs_blogal[numero_pista].value = palabra_correcta[numero_pista];
       arreglo_de_inputs_blogal[numero_pista].classList.add("respuesta_correcta");
 
-      // Actualizar la palabra_global con la letra revelada
+     
       palabra_global = 
           palabra_global.substring(0, numero_pista) +
           palabra_correcta[numero_pista] +
           palabra_global.substring(numero_pista + 1);
 
-      console.log("Pista utilizada. Palabra global actualizada:", palabra_global);
+      console.log("Palabra global actualizada:", palabra_global);
 
-      // Reducir el número de pistas disponibles
+      
       num_pistas--;
       pistas_button.textContent = 'Pistas ' + num_pistas;
   } else {
@@ -416,18 +379,6 @@ function registrarError() {
     actualizarAhorcado();
 }
 
-// function validar_letra(input, palabra, numero_de_input) {
-//     if (palabra[numero_de_input] === input.value) {
-//       return true;
-//     } else {
-      
-//       return false;
-//     }
-//   }
-
-
-
-
 
 function playSound(soundFile)
 {
@@ -435,7 +386,6 @@ function playSound(soundFile)
     audio.play();
 }
   
-
 
 function playAudio(play)
 {
