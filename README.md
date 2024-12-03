@@ -1,7 +1,7 @@
 
 <h1 style="font-weight: bold; color: blue; text-align: center;">a) ¿Qué hace mi programa?</h1>
 
-<p style="font-size: 16px; line-height: 1.6;">
+<p style="font-size: 50px; line-height: 1.6;">
 Este programa es un juego tipo "Ahorcado" donde tienes que adivinar una palabra secreta letra por letra. 
 Si te equivocas, el dibujo del ahorcado se completa un poco más, Tiene un temporizador, 
 un botón de pistas para ayudarte, y modales que te avisan si ganas o pierdes. También guarda los puntajes 
